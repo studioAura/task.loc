@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #f7f1e3;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 16px;
+  color: #0f0f0f;
+}
+
+h1 {
+  font-size: 30px;
+  padding: 40px 0px;
+}
+
+.navbar-brand {
+  text-transform: uppercase;
+}
+
+.nav li a {
+  text-transform: uppercase;
+}
+
+.content {
+  margin-top: 40px;
+}
+
+.panel .panel-default {
+  padding-bottom: 60px !important;
+}
+
+.panel-heading {
+  background: #706fd3 !important;
+  color: #FFFFFF !important;
+}
+
+.panel-body {
+
+}
+
+.panel-footer {
+  background: #cd6133;
+  color: #FFFFFF;
+}
+
