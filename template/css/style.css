@@ -45,3 +45,9 @@ h1 {
   color: #FFFFFF;
 }
 
+li.user-name {
+  float: right;
+  color: #FFFFFF !important;
+  font-weight: bold !important;
+  padding-top: 14px;
+}

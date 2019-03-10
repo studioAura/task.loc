@@ -23,10 +23,14 @@ class User
 
   public function isPassTrue($curPass)
   {
-    echo 'curPass = ' . $curPass . '<br>';
     $mdPass = md5($curPass);
-    echo 'pass = ' . $this->user->password . ' - md5 = ' . $mdPass . '<br>';
     return ($mdPass == $this->user->password);
+  }
+
+  public  function exit()
+  {
+    // очищаем сессию
+    // делаем редирект на главную
   }
 
 }
