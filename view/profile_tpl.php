@@ -8,9 +8,9 @@
   <title>Менеджер задач</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="template/css/style.css">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/view/css/style.css">
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,16 +40,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="tasks.php">Задачи</a></li>
-              <li><a href="profile.php">Профиль</a></li>
+              <li><a href="task">Задачи</a></li>
+              <li><a href="profile">Профиль</a></li>
 
               <?php
-              if($currentUser->login){ ?>
-                <form class="navbar-form navbar-left" action="" method="POST">
+              if(isset($_COOKIE['user'])){ ?>
+                <form class="navbar-form navbar-left" action="index/exitUser" method="POST">
                   <button type="submit" class="btn btn-default" name="exit">Выйти</button>
                 </form>
               <?php } else { ?>
-                <form class="navbar-form navbar-left" action="" method="POST">
+                <form class="navbar-form navbar-left" action="profile/load" method="POST">
                   <div class="form-group">
                     <input type="text" class="form-control" name="login" placeholder="логин">
                   </div>
@@ -71,38 +71,32 @@
 <div class="content">
   <div class="container">
     <div class="row">
-      <?php
-      /*          foreach($files as $file){
-                    $content = DBtxt::load($path, $file);
-                    $item = explode("|", $content);
-                    echo '<div class="panel panel-default">';
-                    echo '<div class="panel-heading">' . $item[1] . ' (создана: ' . $item[0] . ')</div>';
-                    echo '<div class="panel-body">' . $item[3] . '</div>';
-                    echo '<div class="panel-footer"> Выполнить: ' . $item[2] . '</div>';
-                    echo '</div>';
-                    }*/
-      ?>
-    </div>
-    <hr>
-    <!-- Форма добавления -->
-    <div class="row">
-      <div class="add-form">
-        <form action=""  method="post">
-          <div class="form-group">
-            <label for="expirationDate">Дата выполнения</label>
-            <input type="text" class="form-control" name="expirationDate" placeholder="дата в формате 2019-03-21">
+
+        <div class="col-xs-6 col-md-3">
+
+          <img class="avatar" src="<?php echo $currentUser->avatar; ?>" alt="">
+          <div class="load-avatar">
+            <form action="profile/load" method="post" enctype="multipart/form-data">
+                <label class="btn btn-primary" for="my-file-selector">
+                  <input id="my-file-selector" name="filename" type="file" style="display:none"
+                         onchange="$('#upload-file-info').html(this.files[0].name)">
+                  Выберите файл
+                </label>
+                <span class='label label-info' id="upload-file-info"></span>
+              <br>
+              <input class="btn btn-primary btn-load" type="submit" name="load" value="Загрузить" />
+            </form>
           </div>
-          <div class="form-group">
-            <label for="expirationDate">Название задачи</label>
-            <input type="text" class="form-control" name="title" placeholder="дайте название задаче">
-          </div>
-          <div class="form-group">
-            <label for="content">Задача</label>
-            <textarea class="form-control" name="content" rows="5" placeholder="содержимое задачи"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success"  name="task">Добавить</button>
-        </form>
-      </div>
+
+        </div>
+        <div class="col-xs-6 col-md-9">
+          <?php
+            echo 'Ваш логин: <b>' . $currentUser->login . '</b><br>';
+            echo 'Ваш email: <b>' . $currentUser->email . '</b><br>';
+            echo 'Ваш статус: <b>' . $currentUser->role . '</b><br>';
+          ?>
+        </div>
+
     </div>
   </div>
 </div>
@@ -110,8 +104,10 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="vendor/jquery/jquery-1.12.4.min.js"></script>
+<script src="../vendor/jquery/jquery-1.12.4.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

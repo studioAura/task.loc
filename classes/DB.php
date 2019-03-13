@@ -35,5 +35,20 @@ class DB
     return $stmt->fetch();
   }
 
+  public static function runAll($sql, $class, $args = [])
+  {
+    $stmt = self::instance()->prepare($sql);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
+    $stmt->execute($args);
+    return $stmt->fetchAll();
+  }
+
+  public static function save($sql, $args = [])
+  {
+    $stmt = self::instance()->prepare($sql);
+    $stmt->execute($args);
+    return $stmt;
+  }
+
 
 }

@@ -13,29 +13,28 @@ class User
 
   }
 
-  public function getUser($login, $password)
+  public function getUser($id)
   {
-    //$this->login = $login;
-    //$this->password = $password;
+    $table = 'users';
+    $paramName = 'id';
+    $paramValue  = $id;
+    $className = 'User';
+    return Model::getRow($table, $paramName, $paramValue, $className);
+  }
+
+  public function authUser($login, $password)
+  {
     $table = 'users';
     $paramName = 'login';
     $paramValue  = $login;
     $className = 'User';
-    //$this->user = DB::run("SELECT * FROM users WHERE login" . "=?", 'User', [$login]);
     $this->user = Model::getRow($table, $paramName, $paramValue, $className);
-    return $this->user;
-  }
-
-  public function isPassTrue($curPass)
-  {
-    $mdPass = md5($curPass);
-    return ($mdPass == $this->user->password);
-  }
-
-  public  function exitUser()
-  {
-    // очищаем сессию
-    // делаем редирект на главную
+    $mdPass = md5($password);
+    if($mdPass == $this->user->password){
+      return $this->user;
+    } else {
+      return FALSE;
+    }
   }
 
 }

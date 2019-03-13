@@ -34,16 +34,45 @@ h1 {
 .panel-heading {
   background: #706fd3 !important;
   color: #FFFFFF !important;
+  height: 55px;
+}
+
+.title-task{
+  padding-top: 30px !important;
+}
+
+.avatar {
+  width: 200px;
+  padding: 25px;
+  background: #FFFFFF;
+}
+
+.load-avatar {
+  padding-top: 20px;
+  padding-left: 35px;
+}
+
+/*#upload-file-info {
+  margin-left: 15px;
+}*/
+
+.btn-load {
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.btn-delete {
+  float: right;
 }
 
 .panel-body {
 
 }
 
-.panel-footer {
+/*.panel-footer {
   background: #cd6133;
   color: #FFFFFF;
-}
+}*/
 
 li.user-name {
   float: right;
@@ -52,6 +81,6 @@ li.user-name {
   padding-top: 14px;
 }
 
-.welcom {
+.welcome {
   padding-top: 100px;
 }

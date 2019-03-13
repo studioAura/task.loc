@@ -18,16 +18,17 @@ class Router
 
     if (empty($url[0]))
     {
-      $controller = new Index();
+      $controller = new IndexController();
       $controller -> action();
     } elseif (!empty($url[0]) && empty($url[1]))
     {
-      $class = $url[0];
+      $class = $url[0] . 'Controller';
+
       $controller = new $class();
       $controller -> action();
     } elseif (!empty($url[0]) && !empty($url[1]))
     {
-      $class = $url[0];
+      $class = $url[0] . 'Controller';
       $method = $url[1];
       $controller = new $class();
       $controller -> $method($params);

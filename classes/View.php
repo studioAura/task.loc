@@ -8,8 +8,8 @@
 
 class View
 {
-  public static function render($template, $data = NULL)
+  public static function render($template, $currentUser = NULL, $tasks = NULL)
   {
-    require_once 'View/' . $template . '_tpl.php';
+    require_once 'view/' . $template . '_tpl.php';
   }
 }

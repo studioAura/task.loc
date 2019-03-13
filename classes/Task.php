@@ -1,33 +1,17 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: User
+ * Date: 12.03.2019
+ * Time: 0:28
+ */
 
 class Task
 {
-    public $createDate;
-    public $expirationDate;
-    public $content;
-
-    public function viewTask($dir)
-    {
-        $files = DBtxt::dir($dir);
-        foreach($files as $file){
-            $content = DBtxt::load($dir, $file);
-            $item = explode("|", $content);
-           // echo $content . '<br>';
-
-           var_dump($item);
-        }
-
-    }
-
-    public function allTask($dir)
-    {
-        $files = DBtxt::dir($dir);
-        return $files;
-    }
-
-    public function addTask($path, $file, $date, $title, $expirationDate, $content)
-    {
-        DBtxt::save($path, $file, $date, $title, $expirationDate, $content);
-    }
+  public $create_date;
+  public $exp_date;
+  public $title;
+  public $task;
+  public $user_id;
 
 }
